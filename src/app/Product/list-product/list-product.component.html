@@ -1,0 +1,41 @@
+<!-- <div class="conatiner" style="padding-left:10px;">  
+  <div class="col-lg-5 table-responsive">  -->
+    <h2 class="text-center" style="margin-top: 70px; color:#2a0240"> Product Details</h2>
+    <div class="conatiner" style="padding-top:20px;background-color:white">
+      <div class="col-sm-11" style="padding-top:20px;padding-bottom:20px;padding-left:150px;padding-right:150px;">
+        <input class="form-control" type="text" placeholder="Search Here.." [(ngModel)]="searchText"> <br />
+    
+    
+        <div class="text-right">
+          <button class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6;" (click)="addproduct()"> Add Product</button>
+        </div>
+        <br/>
+        <table class="table table-striped">
+          <thead style="color: #2a0240; background: #e0d7e6;">
+            <tr>
+              <th>Product Id</th>
+              <th>Product Name</th>
+              <th>Brand Name</th>
+              <th>Label</th>
+              <th>Quantity</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of product | filter:searchText| paginate: { itemsPerPage: 6, currentPage: p }">
+              <td>{{product.ProductId}}</td>
+              <td>{{product.ProductName}}</td>
+              <td>{{product.BrandName}}</td>
+              <td>{{product.Label}}</td>
+              <td>{{product.Quantity}}</td>
+              <td><button class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6;" (click)="deleteproduct(product)"> Delete</button>
+                <button class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6; margin-left: 20px;" (click)="editproduct(product)"> Edit </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pagination">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </ul>
+      </div>
+    </div>

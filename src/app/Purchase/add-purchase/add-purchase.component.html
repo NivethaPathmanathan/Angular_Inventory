@@ -1,0 +1,75 @@
+<div class="col-md-11, container" style="margin-top: 70px; background-color:#e0d7e6; color: #2a0240;">
+  <h2 class="text-center" style="color:#2a0240">Add Purchase</h2>
+  <div class="row">
+    <div class="col-sm-11">
+
+      <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+       <div class="form-group col-sm-6">
+        <label for="ProductId"><b>Product Name:</b></label><br>
+      <select formControlName="ProductId" placeholder ="Select Product Name" name="ProductId" id="ProductId" required>
+        <option *ngFor="let pro of products" value="{{pro.ProductId}}">
+          {{pro.ProductName}}
+        </option>
+      </select>
+      <div class = "error" *ngIf="addForm.controls['ProductId'].invalid && addForm.controls['ProductId'].touched">
+        Select Product Name
+      </div>
+    </div>
+    <br/>
+
+    <div class="form-group col-sm-6">
+      <label for="PurchaseDate"><b>Purchase Date:</b></label><br>
+    <div class = "error" *ngIf="addForm.controls['PurchaseDate'].invalid && addForm.controls['PurchaseDate'].touched">
+      <!-- <mat-form-field class="wm-datepicker">
+        <input [matDatepicker]="picker" matInput >
+        <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #picker panelClass="wm-calendar"  ></mat-datepicker>
+      </mat-form-field> -->
+      Select Purchase Date
+    </div>
+    </div>
+     <br/>
+
+
+      <div class="form-group">
+        <label for="NoReceived"><b>No of Received Products:</b></label>
+        <input formControlName="NoReceived" placeholder="Enter the No of Received Products" name="NoReceived" class="form-control" id="NoReceived" required>
+      </div>
+      <div *ngIf="addForm.controls['NoReceived'].invalid && (addForm.controls['NoReceived'].dirty || addForm.controls['NoReceived'].touched || submitted)" class="alert">
+
+        <div *ngIf="addForm.controls['NoReceived'].errors.required" style="color:red;">
+        Please enter the NoReceived
+      </div>
+    </div>
+    <br/>
+
+    <div class="form-group">
+      <label for="SupplierName"><b>Supplier Name:</b></label>
+      <input formControlName="SupplierName" placeholder="Enter the SupplierName" name="SupplierName" class="form-control" id="SupplierName" required>
+    </div>
+    <div *ngIf="addForm.controls['SupplierName'].invalid && (addForm.controls['SupplierName'].dirty || addForm.controls['SupplierName'].touched || submitted)" class="alert">
+      <div *ngIf="addForm.controls['SupplierName'].errors.required" style="color:red;">
+      Please enter the Supplier Name
+    </div>
+  </div>
+  <br/>
+
+        <button type="Submit" class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6;"><b>Add Purchase</b></button>
+
+        <div class = "row" *ngIf="showMsg">
+          <div class="col-xs-10">
+            <p class="alert alert-success">
+                <strong>Add Purchase Successfully!</strong>
+            </p>
+          </div>
+        </div>
+      </form>
+      </div>
+
+      <p style= "text-align:left; padding-left:300px;color:red">
+        Form Status: {{ addForm.status }}
+      </p>
+
+  </div>
+</div>

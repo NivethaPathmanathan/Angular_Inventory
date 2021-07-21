@@ -1,0 +1,31 @@
+<div class="col-md-11, container" style="margin-top: 70px; background-color:#e0d7e6; color: #2a0240;">
+  <h2 class="text-center" style="color:#2a0240">Edit Sales</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="SalesDate"><b>SalesDate</b></label>
+    <input type="SalesDate" formControlName="SalesDate" placeholder="SalesDate" name="SalesDate" class="form-control" id="SalesDate"><br/>
+  </div>
+  
+  <div class="form-group">
+    <label for="NoOfSales"><b>NoOfSales:</b></label>
+    <input formControlName="NoOfSales" placeholder="NoOfSales" name="NoOfSales" class="form-control" id="NoOfSales"><br/>
+  </div>
+  
+  <div class="form-group">
+    <label for="CustomerName"><b>Customer Name:</b></label>
+    <input formControlName="CustomerName" placeholder="Customer Name" name="CustomerName" class="form-control" id="CustomerName"><br/>
+  </div>
+  
+  <div style="padding-bottom:50px">
+  <button class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6;"><b>Update</b></button><br/>
+  </div>  
+  <div class = "row" *ngIf="showMsg">
+    <div class="col-xs-12">
+      <p class="alert alert-success">
+          <strong>Sales Details Updated!!</strong>
+      </p>
+    </div>
+  </div>
+</form>
+</div>

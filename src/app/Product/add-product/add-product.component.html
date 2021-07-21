@@ -1,0 +1,61 @@
+<div class="col-md-11, container" style="margin-top: 70px; background-color:#e0d7e6; color: #2a0240;">
+  <h2 class="text-center" style="margin-top: 70px; color:#2a0240">Add product</h2>
+  <div class="row">
+    <div class="col-sm-11">
+
+      <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="ProductName"><b>Product Name:</b></label>
+        <input type="ProductName" formControlName="ProductName" placeholder="Product Name" name="ProductName" class="form-control" id="ProductName">
+      </div>
+      <div *ngIf="addForm.controls['ProductName'].invalid && (addForm.controls['ProductName'].dirty || addForm.controls['ProductName'].touched || submitted)" class="alert">
+        <div *ngIf="addForm.controls['ProductName'].errors.required" style="color:red;">
+        Please enter the Product Name
+      </div>
+     </div>
+     <br/>
+
+      <div class="form-group">
+        <label for="BrandName"><b>Brand Name:</b></label>
+        <input formControlName="BrandName" placeholder="Brand Name" name="BrandName" class="form-control" id="BrandName" required>
+      </div>
+      <div *ngIf="addForm.controls['BrandName'].invalid && (addForm.controls['BrandName'].dirty || addForm.controls['BrandName'].touched || submitted)" class="alert">
+        <div *ngIf="addForm.controls['BrandName'].errors.required" style="color:red;">
+        Please enter the Brand Name
+      </div>
+    </div>
+    <br/>
+
+      <div class="form-group">
+        <label for="Label"><b>Label:</b></label>
+        <input formControlName="Label" placeholder="Label" name="Label" class="form-control" id="Label">
+      </div>
+      <br/>
+
+      <div class="form-group">
+        <label for="Quantity"><b>Quantity:</b></label>
+        <input formControlName="Quantity" placeholder="Quantity" name="Quantity" class="form-control" id="Quantity">
+      </div>
+      <br/>
+
+        <button type="Submit" style="background-color:#53047d; color: #e0d7e6;"><b>Add Product</b></button>
+    <br/>
+        <div class = "row" *ngIf="showMsg">
+          <div class="col-xs-10">
+            <p class="alert alert-success">
+                <strong>Add Product Successfully!</strong>
+            </p>
+          </div>
+        </div>
+      </form>
+      </div>
+
+      <p class="text-left" style = "padding-top:500px;color:red">
+        Form Status: {{ addForm.status }}
+      </p>
+
+  </div>
+</div>
+  <!-- <div class="conatiner" style="padding-left:10px;">
+  <div class="col-lg-5 table-responsive">  -->

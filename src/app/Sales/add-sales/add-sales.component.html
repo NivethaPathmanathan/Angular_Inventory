@@ -1,0 +1,70 @@
+<div class="col-md-11, container" style="margin-top: 70px; background-color:#e0d7e6; color: #2a0240;">
+  <h2 class="text-center" style="color:#2a0240">Add Sales</h2>
+  <div class="row">
+    <div class="col-sm-11">
+    
+      <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group col-sm-6"> 
+          <label for="ProductId"><b>Product Name:</b></label><br>
+        <select formControlName="ProductId" placeholder ="Select Product Name" name="ProductId" id="ProductId" required>
+          <option *ngFor="let pro of products" value="{{pro.ProductId}}">
+            {{pro.ProductName}}
+          </option>
+        </select>
+        <div class = "error" *ngIf="addForm.controls['ProductId'].invalid && addForm.controls['ProductId'].touched">
+          Select Product Name
+        </div>
+      </div>
+      <br/>
+  
+      <div class="form-group col-sm-6"> 
+        <label for="SalesDate"><b>Sales Date:</b></label><br>
+      <div class = "error" *ngIf="addForm.controls['SalesDate'].invalid && addForm.controls['SalesDate'].touched">
+        Select Sales Date
+      </div>
+      </div>
+     
+     <div class="form-group">
+      <label for="NoOfSales"><b>Number Of Sales:</b></label>
+      <input formControlName="NoOfSales" placeholder="Enter the Number Of Sales" name="NoOfSales" class="form-control" id="NoOfSales" required>
+    </div>
+    <div *ngIf="addForm.controls['NoOfSales'].invalid && (addForm.controls['NoOfSales'].dirty || addForm.controls['NoOfSales'].touched || submitted)" class="alert">
+      <div *ngIf="addForm.controls['NoOfSales'].errors.required" style="color:red;">
+      Please enter the NoOfSales
+    </div>
+  </div>
+  <br/>
+
+  <div class="form-group">
+    <label for="CustomerName"><b>Customer Name:</b></label>
+    <input formControlName="CustomerName" placeholder="Enter the CustomerName" name="CustomerName" class="form-control" id="CustomerName" required>
+  </div>
+  <div *ngIf="addForm.controls['CustomerName'].invalid && (addForm.controls['CustomerName'].dirty || addForm.controls['CustomerName'].touched || submitted)" class="alert">
+    <div *ngIf="addForm.controls['CustomerName'].errors.required" style="color:red;">
+    Please enter the Customer Name
+  </div>
+</div>
+<br/>
+
+        <button type="Submit"  class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6;"><b>Add Sales</b></button>
+    
+        <div class = "row" *ngIf="showMsg">
+          <div class="col-xs-10">
+            <p class="alert alert-success">
+                <strong>Add Sales Successfully!</strong>
+            </p>
+          </div>
+        </div>
+      </form>
+      </div>
+    
+      <p style= "text-align:left; padding-left:300px;color:red">
+        Form Status: {{ addForm.status }}
+      </p>
+
+  </div>
+</div>
+  <!-- <div class="conatiner" style="padding-left:10px;">  
+  <div class="col-lg-5 table-responsive">  -->
+ 

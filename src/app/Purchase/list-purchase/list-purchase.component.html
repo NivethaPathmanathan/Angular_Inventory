@@ -1,0 +1,39 @@
+<h2 class="text-center" style="margin-top: 70px; color:#2a0240"> Purchase Details</h2>
+<div class="conatiner" style="padding-top:20px;background-color:white">
+  <div class="col-sm-11" style="padding-top:20px;padding-bottom:20px;padding-left:150px;padding-right:150px;">
+    <input class="form-control" type="text" placeholder="Search Here.." [(ngModel)]="searchText"> <br />
+
+
+    <div class="text-right">
+      <button class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6;" (click)="addpurchase()"> Add Purchase</button>
+    </div>
+    <br/>
+    <table class="table table-striped">
+      <thead style="color: #2a0240; background: #e0d7e6;">
+        <tr>
+          <th>Purchase Id</th>
+          <th>Purchase Date</th>
+          <th>No Received</th>
+          <th>Supplier Name</th>
+          <th>Product Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let purchase of purchase | filter:searchText| paginate: { itemsPerPage: 6, currentPage: p }">
+          <td>{{purchase.PurchaseId}}</td>
+          <td>{{purchase.PurchaseDate}}</td>
+          <td>{{purchase.NoReceived}}</td>
+          <td>{{ purchase.SupplierName}}</td>
+          <td>{{purchase.ProductName}}</td>
+          <td><button class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6;" (click)="deletepurchase(purchase)"> Delete</button>
+            <button class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6; margin-left: 20px;" (click)="editpurchase(purchase)"> Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="pagination">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </ul>
+  </div>
+</div>

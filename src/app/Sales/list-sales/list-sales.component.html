@@ -1,0 +1,39 @@
+    <h2 class="text-center" style="margin-top: 70px; color:#2a0240"> Sales Details</h2>
+    <div class="conatiner" style="padding-top:20px;background-color:white">
+      <div class="col-sm-11" style="padding-top:20px;padding-bottom:20px;padding-left:150px;padding-right:150px;">
+        <input class="form-control" type="text" placeholder="Search Here.." [(ngModel)]="searchText"> <br />
+   
+    
+        <div class="text-right">
+          <button class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6;" (click)="addsales()"> Add Sales</button>
+        </div>
+    
+        <table class="table table-striped">
+          <thead style="color: #2a0240; background: #e0d7e6;">
+            <tr>
+              <th>Sales Id</th>
+              <th>Sales Date</th>
+              <th>No Of Sales</th>
+              <th>Customer Name</th>
+              <th>Product Id</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sales of sales | filter:searchText| paginate: { itemsPerPage: 6, currentPage: p }">
+              <td>{{sales.SalesId}}</td>
+              <td>{{sales.SalesDate}}</td>
+              <td>{{sales.NoOfSales}}</td>
+              <td>{{ sales.CustomerName}}</td>
+              <td>{{sales.ProductId}}</td>
+              <td><button  class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6;" (click)="deletesales(sales)"> Delete</button>
+                <button class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6; margin-left: 20px;" (click)="editsales(sales)"> Edit </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pagination">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </ul>
+      </div>
+    </div>

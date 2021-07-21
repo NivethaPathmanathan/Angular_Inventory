@@ -1,0 +1,36 @@
+<div class="col-md-11, container" style="margin-top: 70px; background-color:#e0d7e6; color: #2a0240;">
+  <h2 class="text-center" style="color:#2a0240">Edit Product</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="ProductName"><b>Product Name:</b></label>
+    <input formControlName="ProductName" placeholder="Product Name" name="ProductName" class="form-control" id="ProductName"><br/>
+  </div>
+  
+  <div class="form-group">
+    <label for="BrandName"><b>Brand Name:</b></label>
+    <input formControlName="BrandName" placeholder="Brand Name" name="BrandName" class="form-control" id="BrandName"><br/>
+  </div>
+
+  <div class="form-group">
+    <label for="Label"><b>Label:</b></label>
+    <input formControlName="Label" placeholder="Label" name="Label" class="form-control" id="Label"><br/>
+  </div>
+
+  <div class="form-group">
+    <label for="Quantity"><b>Quantity:</b></label>
+    <input formControlName="Quantity" placeholder="Quantity" name="Quantity" class="form-control" id="Quantity"><br/>
+  </div>
+  
+  <div style="padding-bottom:50px">
+  <button class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6;"><b>Update</b></button><br/>
+  </div>  
+  <div class = "row" *ngIf="showMsg">
+    <div class="col-xs-12">
+      <p class="alert alert-success">
+          <strong>Product Details Updated!!</strong>
+      </p>
+    </div>
+  </div>
+</form>
+</div>

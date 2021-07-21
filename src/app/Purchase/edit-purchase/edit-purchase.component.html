@@ -1,0 +1,36 @@
+<div class="col-md-11, container" style="margin-top: 70px; background-color:#e0d7e6; color: #2a0240;">
+  <h2 class="text-center" style="color:#2a0240">Edit Purchase</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="PurchaseID"><b>Purchase Id</b></label>
+      <input type="PurchaseID" formControlName="PurchaseID" name="PurchaseID" class="form-control" id="PurchaseID"><br/>
+    </div>
+
+  <div class="form-group">
+    <label for="Purchase Date"><b>PurchaseDate</b></label>
+    <input type="PurchaseDate" formControlName="PurchaseDate" placeholder="Purchase Date" name="PurchaseDate" class="form-control" id="PurchaseDate"><br/>
+  </div>
+
+  <div class="form-group">
+    <label for="NoReceived"><b>NoReceived:</b></label>
+    <input formControlName="NoReceived" placeholder="NoReceived" name="NoReceived" class="form-control" id="NoReceived"><br/>
+  </div>
+
+  <div class="form-group">
+    <label for="SupplierName"><b>Supplier Name:</b></label>
+    <input formControlName="SupplierName" placeholder="Supplier Name" name="SupplierName" class="form-control" id="SupplierName"><br/>
+  </div>
+
+  <div style="padding-bottom:50px">
+  <button class="btn btn-primary" style="background-color:#53047d; color: #e0d7e6;"><b>Update</b></button><br/>
+  </div>
+  <div class = "row" *ngIf="showMsg">
+    <div class="col-xs-12">
+      <p class="alert alert-success">
+          <strong>Purchase Details Updated!!</strong>
+      </p>
+    </div>
+  </div>
+</form>
+</div>
